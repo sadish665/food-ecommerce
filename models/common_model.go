@@ -9,6 +9,9 @@ type CommonModel struct {
 	CreatedBy uint 
 	UpdatedBy uint
 	DeletedBy uint
+}
+
+type CommonModelDto struct{
 	Status bool
 	Priority int
 }

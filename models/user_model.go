@@ -2,39 +2,31 @@ package models
 
 type UserModel struct{
 	CommonModel
-	FirstName string
-	LastName string
-	Email string
-	Address string
-	Password string
-	Age int
+	UserDto
+}
+
+type UserDto struct{
+	UserName string `json:"user_name"`
+	FirstName string `json:"first_name"`
+	LastName string `json:"last_name"`
+	Email string `json:"email"`
+	Address string `json:"address"`
+	Password string `json:"password"`
+	Age int `json:"age"`
+	CommonModelDto
 }
 
 func GetAllUsers()[]UserModel{
-		c := UserModel{
+	c := UserModel{
+		UserDto: UserDto{
 			FirstName: "abc",
 			LastName: "xyz",
 			Email: "abaxyz@gmail.com",
 			Address: "BKT",
 			Age: 20,
-		}
-		b := UserModel{
-			FirstName: "def",
-			LastName: "uvw",
-			Email: "defuvw@gmail.com",
-			Address: "KTM",
-			Age: 21,
-		}
-		a := UserModel{
-			FirstName: "ghi",
-			LastName: "rst",
-			Email: "ghirst@gmail.com",
-			Address: "LTP",
-			Age: 22,
-		}
+		},
+	}	
 	return []UserModel{
-		a,
-		b,
 		c,
 	}
 }
