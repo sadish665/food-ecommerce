@@ -5,14 +5,24 @@ services:
     container_name: food-ecommerce-app
     image: sadishcha/food-ecommerce-app:latest
     build: .
+    environment:
+      DB_HOST: fe_db
+      DB_PORT: 5432
+      DB_NAME: food_ecommerce_db
+      DB_PASSWORD: 1234
+      DB_USER: sadish
     ports:
       - "8082:8080"
     depends_on:
       - food-ecommerce-db-service
     volumes:
       - .:/app
-    command: ["go","run","main.go"] 
+    command: ["go","run","main.go"]
+    networks:
+    - ecomm-net 
   food-ecommerce-db-service:
+    networks:
+      - ecomm-net
     container_name: fe-db
     image: postgres:17.2-alpine3.21
     environment:

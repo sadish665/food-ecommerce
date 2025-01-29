@@ -21,7 +21,7 @@ func InitDatabase() {
 	log.Println(dbUrl)
 	db, err := gorm.Open(
 		postgres.Open(
-			"host=localhost port=5433 user=sadish dbname=food_ecommerce_db password=1234 sslmode=disable",
+			dbUrl,
 		),
 		&gorm.Config{},
 	)
