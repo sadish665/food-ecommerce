@@ -2,12 +2,14 @@ package main
 
 import (
 	"net/http"
+
+	"github.com/sadish665/food-ecommerce/database"
 	"github.com/sadish665/food-ecommerce/responses"
 	"github.com/sadish665/food-ecommerce/routes"
 )
 
 func main() {
-	
+	database.InitDatabase()
 	print("hello all, welcome to my new api")
 	newRouter := routes.InitAllRoutes()
 	print("starting server @8080")

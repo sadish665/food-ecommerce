@@ -1,0 +1,28 @@
+version: "1.0"
+#define services
+services:
+  food-ecommerce-app:
+    container_name: food-ecommerce-app
+    image: sadishcha/food-ecommerce-app:latest
+    build: .
+    ports:
+      - "8082:8080"
+    depends_on:
+      - food-ecommerce-db-service
+    volumes:
+      - .:/app
+    command: ["go","run","main.go"] 
+  food-ecommerce-db-service:
+    container_name: fe-db
+    image: postgres:17.2-alpine3.21
+    environment:
+      POSTGRES_USER: sadish
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: food_ecommerce_db
+      #POSTGRES_PORT: 5432
+    ports:
+      - 5433:5432
+    volumes:
+      - fe_db_backup:/var/lib/postgres/data
+volumes:
+  fe_db_backup:              
