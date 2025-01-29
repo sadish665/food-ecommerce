@@ -36,3 +36,6 @@ services:
       - fe_db_backup:/var/lib/postgres/data
 volumes:
   fe_db_backup:              
+networks:
+  ecomm-net:
+    driver: bridge  
